@@ -4,7 +4,8 @@
 #define debug(x) cerr << (x) << '\n';
 #define bits(x,i) ((x >> i) & 1)
 using namespace std;
-const int N = 
+const int N = 10;
+int n;
 int main(){
 	ios_base::sync_with_stdio(0); cin.tie(0);
 }
