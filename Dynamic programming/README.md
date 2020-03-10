@@ -10,7 +10,7 @@ Một số bài tập ví dụ.
 Tìm xâu con chung của 2 xâu A[1...n], B[1...m].
 #### Giới hạn.
 - n <= 5000.
-- m <= 10e6.
+- m <= 10e6.  
 Các kí tự trong xâu là 'A'...'Z'.
 #### Lời giải.
 **Thuật toán kinh điển:**  

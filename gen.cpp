@@ -1,7 +1,7 @@
 #include <bits/stdc++.h>
 using namespace std;
 // Tên chương trình
-const string NAME = "BLOCKS_IZHO"; 
+const string NAME = "D"; 
 // Số test kiểm tra
 const int NTEST = 100;
 
@@ -21,10 +21,10 @@ int main()
     {
         ofstream inp((NAME + ".inp").c_str());
        	int n = rand() % 20 + 1;
-       	int k = rand() % n + 1;
+       	int k = rand() % 5 + 1;
        	inp << n << ' ' << k << '\n';
        	for(int i=1;i<=n;++i) {
-       		int val = rand() % 100000 + 1;
+       		int val = rand() % 1000 + 1;
        		inp << val << ' ';
        	}
        	inp << '\n';
