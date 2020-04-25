@@ -11,4 +11,4 @@ int unions(int x,int y){ pset[finds(x)] = finds(y); }
 ```
 ## Exercise.  
 1. [IOIBIN](https://codeforces.com/group/FLVn1Sc504/contest/274710/problem/I)  
-Solution: [Source code](.IOIBIN.cpp)
+Solution: [Source code](./IOIBIN.cpp)
