@@ -4,7 +4,7 @@
 #define debug(x) cerr << (x) << '\n';
 #define bits(x,i) ((x >> i) & 1)
 using namespace std;
-const int N = 10005;
+const int N = 20005;
 pair<int,int> a[N];
 int n;
 int pset[N];
