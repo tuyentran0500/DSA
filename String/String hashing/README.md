@@ -4,9 +4,11 @@ The idea behind string hashing is using hashing to compare two substring in O(1)
 Pre-caculate string table.  
 ```
 void init(ll h[] , char s[], int n){
+    base[0] = 0;
+    for(int i=1;i<=n;++i) base[i] = (base[i-1] * 30) % mod;
     for (int i=1;i<=n; ++i){
-        int x = (s[i] -'a');
-        h[i] = (h[i-1]*26 + x ) % mod;
+        int x = (s[i] -'a' + 1);
+        h[i] = (h[i-1]*30 + x) % mod;
     }
 }
 ```  
