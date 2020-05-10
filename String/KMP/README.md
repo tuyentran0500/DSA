@@ -92,7 +92,12 @@ call maxPi = max(p[i]) within t. then the prefix with size maxPi + 1...s will no
 So for each character appended we can compute the number of new substrings in O(n) times, which gives a time complexity of O(n^2) in total.  
 It is worth noticing, that we can also compute the number of different substrings by appending the characters at the beginning, or by deleting characters from the beginning or the end.  
 ### 4. Compressing a string.  
-Given a string s of length n. We want to find the shortest "compressed" representation of the string, i.e. we want to find a string t of smallest length such that s can be represented as a concatenation of one or more copies of t.  
+> Given a string s of length n. We want to find the shortest "compressed" representation of the string, i.e. we want to find a string t of smallest length such that s can be represented as a concatenation of one or more copies of t.  
+
+[Exercise](https://onlinejudge.org/index.php?option=com_onlinejudge&Itemid=8&page=show_problem&problem=396)  
+You can prove the answer for this problem is n - p[n-1] by relying on the fact that string s is a concatenation of one or more copies of t.  
+
+
 
 
 
