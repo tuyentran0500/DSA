@@ -96,6 +96,7 @@ It is worth noticing, that we can also compute the number of different substring
 
 [Exercise](https://onlinejudge.org/index.php?option=com_onlinejudge&Itemid=8&page=show_problem&problem=396)  
 You can prove the answer for this problem is n - p[n-1] by relying on the fact that string s is a concatenation of one or more copies of t.  
+[Source code](./UVA455.cpp) 
 
 
 
