@@ -1,2 +1,5 @@
 # DSA project  
-## Made by Tuyen Tran
+## made by Tuyen.  
+**Note:** The work is insprired by many algorithm websites (including: VNOI, cp-algorithms, ...).  
+
+ 
