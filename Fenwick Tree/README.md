@@ -23,4 +23,9 @@ int get(int t,int u){
 	return ans;
 }
 ```  
-Explain: x - (x&-x) = extract the last set ` bit in the binary representation of i.  
+Explain: x - (x&-x) = extract the last set bit in the binary representation of i.  
+Make an unique vector:
+```
+sort(a.begin(), a.end());
+a.resize(unique(a.begin(), a.end()) - a.begin());
+```
