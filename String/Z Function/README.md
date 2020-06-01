@@ -88,6 +88,7 @@ We have:
 + Z[3] = 3  
 + Z[4] = 0  
 + Z[5] = 1  
+
 From the above array we can conclude that we have 1 substring which can be choosen atleast 3 times. Why ? because there are 3 entries array that are greater than or equal to 1.  
 Similarly we can deduce for 2 (2 times), 3 (2 times), 4 (1 time ) and 5(1 time).  
 So we increment cnt[3] once, cnt[2] twice and cnt[1] twice.  
