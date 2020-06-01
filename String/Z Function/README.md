@@ -92,7 +92,7 @@ From the above array we can conclude that we have 1 substring which can be choos
 Similarly we can deduce for 2 (2 times), 3 (2 times), 4 (1 time ) and 5(1 time).  
 So we increment cnt[3] once, cnt[2] twice and cnt[1] twice.  
 Now problem is calculate exactly how many substring can be choose exactly i times. Base on simple math, we have: `cnt[i]-cnt[i+1]`.  
-![Source code](./CHSTR.cpp)  
+[**Source code**](./CHSTR.cpp)  
 
 
 
