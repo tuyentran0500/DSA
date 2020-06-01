@@ -63,7 +63,7 @@ These application will be largely similar to applications of **prefix function**
 Similar to KMP sections, we have a new string s = p + "#" + t.
 And your mission will be running Z-function to the whole string s, find where z[i] = p.size().  
 [**Source code**](./SUBSTR.cpp)  
-## **Number of distinct substrings in a string**  
+### **Number of distinct substrings in a string**  
 > Given a string of length n, count the number of distinct substrings of s.  
 
 We'll solve this problem iteratively. That is, knowing the current number of different substrings, recalculating this amount after adding to the end of s one characters.  
@@ -73,6 +73,30 @@ So our answer will be: `k += t.size() - z_max`
 **String compression**  
 > Given a string s of length n. Find its shortest "compressed" representation, that is: find a string t of shortest length such that s can be represented as a concatenation of one or more copies of t.  
 A solution is: compute the Z-functon of s, loop through all i such that i divdes n. Stop at the first place such that i + z[i] = n. Then, the string can be compressed to the length i.  
+## Practice problems:
+### **1.[Chef and String](https://www.codechef.com/problems/CHSTR)**  
+> Given a string with length n, count how many ways that way the we can choose k substrings that is equal.  
+
+The idea of the problem is, similar with the problem that you have to count how many different substrings.  
+Call cnt[i] is the number of at least i substrings are equal.  
+Now we call Z functions n times for suffix P = S[i..N-1].  
+With each string P, we realize that it is possible to calculate cnt[i] by it.  
+For example Z function of P = S[0..N-1] = "ababa".  
+We have:  
++ Z[1] = 5  
++ Z[2] = 0  
++ Z[3] = 3  
++ Z[4] = 0  
++ Z[5] = 1  
+From the above array we can conclude that we have 1 substring which can be choosen atleast 3 times. Why ? because there are 3 entries array that are greater than or equal to 1.  
+Similarly we can deduce for 2 (2 times), 3 (2 times), 4 (1 time ) and 5(1 time).  
+So we increment cnt[3] once, cnt[2] twice and cnt[1] twice.  
+Now problem is calculate exactly how many substring can be choose exactly i times. Base on simple math, we have: `cnt[i]-cnt[i+1]`.  
+![Source code](./CHSTR.cpp)  
+
+
+
+
 
 
 
