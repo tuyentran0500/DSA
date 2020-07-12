@@ -120,7 +120,9 @@ Ta có 2 TH:
 - a[i] là trọng số của dãy thứ j. Khi đó F(i,j) = max(F(i',j-1)) với i' = (L[i], i).  
 
 Để tối ưu công thức trong trường hợp 2, ta hoàn toàn có thể cập nhật công thức trong O(logn). Tuy nhiên, ta có thể dùng stack để duy trì giá trị min trong đoạn (L[i], i).  
-### Bài toán 2: 
+
+- Blog: [Non trivial DP tricks and techniques](https://codeforces.com/blog/entry/47764)  
+
 
 
 
