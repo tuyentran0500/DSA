@@ -78,6 +78,10 @@ http://vn.spoj.com/problems/GSS/ - segment tree ..
 ## Recommend exercise 7/2020:  
 + [ABC 172E](https://atcoder.jp/contests/abc172/tasks/abc172_e) - inclusive and exclusive theorems  
 + [LIS on Tree - ABC165F](https://atcoder.jp/contests/abc165/tasks/abc165_f) - LIS(using binary search) and rollback technique.  
++ [Number of components](https://codeforces.com/contest/1151/problem/E) - math + nice comment. --> Contribution to the sum.  
++ [Microtransactions](https://codeforces.com/contest/1165/problem/F2) - Binary search + greedy.  
+
+
 
 
 
