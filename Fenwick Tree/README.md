@@ -28,4 +28,15 @@ Make an unique vector:
 ```
 sort(a.begin(), a.end());
 a.resize(unique(a.begin(), a.end()) - a.begin());
+```  
+## BIT Manipulation:  
+### Enumerating all submasks of a given mask  
 ```
+for (int m = 1; m < (1 << n); ++m){
+	for (int s= m; s; s = (s-1) & m){
+	...
+	}
+}
+```  
+
+
