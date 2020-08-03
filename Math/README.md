@@ -27,3 +27,15 @@ long long C(int k,int n){
 	return inv(num, den);
 }
 ```  
+## Enumerating all submasks of a given mask  
+```
+for (int m = 1; m < (1 << n); ++m){
+	for (int s= m; s; s = (s-1) & m){
+	...
+	}
+}
+```  
+**Example problem:** [Or Plus Max](https://atcoder.jp/contests/arc100/tasks/arc100_c)  
+[**Source code**](../Atcoder/ARC100E.cpp)  
+
+
