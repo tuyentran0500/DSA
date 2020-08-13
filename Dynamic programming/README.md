@@ -121,6 +121,19 @@ Ta có 2 TH:
 
 Để tối ưu công thức trong trường hợp 2, ta hoàn toàn có thể cập nhật công thức trong O(logn). Tuy nhiên, ta có thể dùng stack để duy trì giá trị min trong đoạn (L[i], i).  
 
+### Bài toán 2: [CUTSEQ](https://vn.spoj.com/problems/CUTSEQS/)  
+Well, that won't be easy to explain.
+
+Consider this variation of a straightforward DP solution. Let D[i] be the answer to the problem for input A[i],A[i+1],...,A[N] (i.e. for a suffix of the input array). It's easy to calculate D in O(N^2): D[i] = min(D[i+k]+max(A[i],...,A[i+k-1])) for k=1,2,... with A[i]+A[i+1]+...+A[i+k-1] <= M; i goes from N down to 1 (for 1-indexed A). k is the length of the first taken subsequence.
+
+This DP can be calculated in O(N) with some insights.
+
+1) Suppose we need to decide the length of a subsequence starting from i. Let the maximum possible length of this subsequence be q[i] (if we take q[i]+1 elements, the sum will exceed M). When does it make sense to take less than q[i] elements (say, j elements)? Only if A[i+j] is greater than all of A[i],A[i+1],...,A[i+j-1]. Let's call such A[i+j] a record. So, it's sufficient to only consider ending subsequence either right before a record or as far as possible.
+
+2) While moving i from right to left, we can maintain the set of records using a standard technique with a stack. We also want to make it a deque and pop elements from the right end to only have indices less than i+q[i] in deque.
+
+3) For current fixed i, each element of the deque (except the first) corresponds to a plausible value of k in the first O(N^2) formula. So for each value in the deque we can also maintain value D[i+k]+max(A[i],...,A[i+k-1]) — the value we want to minimize by k for each i. The good thing is, max(A[i],...,A[i+k-1])=A[previous element in the deque] since the deque contains the sequence of records. So it only changes when we touch the element right before it, so we only need to update one value in deque for each i (after all pops from front and back). Awesome. Now to get the value of D[i] we only need to find the minimum of these values in the deque. We can use a standard data structure for that: a deque that answers minimum queries. Or we can use a segment tree. And that's a solution.
+
 - Blog: [Non trivial DP tricks and techniques](https://codeforces.com/blog/entry/47764)  
 
 
