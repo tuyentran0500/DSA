@@ -141,6 +141,26 @@ Similarly, a node u is a joint, if:
 You can submit your code [here](https://vn.spoj.com/problems/GRAPH_/)  
 
 [**Source code**](./GRAPH.cpp)  
+
+## LCA(Lowest Common Ancestor)  
+Source code:
+```
+int lca(int u,int v){
+    if (level[u] < level[v]) swap(u,v);
+    for(int i=logN-1;i>=0;--i) if (level[u] - (1 << i) >= level[v]) u = par[u][i];
+    if (u == v) return u;
+    for(int i=logN-1;i>=0;--i) if (par[u][i] != -1 && par[u][i] != par[v][i]) u = par[u][i], v = par[v][i];
+    return par[u][0];
+}
+void prep(int u,int preU){
+    par[u][0] = preU;
+    if (preU != -1) level[u] = level[preU] + 1;
+    for (auto node : G[u]){ 
+        if (node.adj == preU) continue;
+        prep(node.adj, u);
+    }
+}
+```
  
 
 
