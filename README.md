@@ -80,6 +80,31 @@ http://vn.spoj.com/problems/GSS/ - segment tree ..
 + [LIS on Tree - ABC165F](https://atcoder.jp/contests/abc165/tasks/abc165_f) - LIS(using binary search) and rollback technique.  
 + [Number of components](https://codeforces.com/contest/1151/problem/E) - math + nice comment. --> Contribution to the sum.  
 + [Microtransactions](https://codeforces.com/contest/1165/problem/F2) - Binary search + greedy.  
++ [Active Infants](https://atcoder.jp/contests/abc163/tasks/abc163_e) - Nice problem + ignore the `abs()` notation and dp from both sides. --> Look closer to the example.  
++ [Don't be a subsequence](https://atcoder.jp/contests/arc081/tasks/arc081_c) - DP + `nxt table` + Nice observation.  
++ [Small Products](https://atcoder.jp/contests/abc132/tasks/abc132_f) - DP + square root --> Optimize the complexity.  
++ [Or Plus Max](https://atcoder.jp/contests/arc100/tasks/arc100_c) - For all subsets.  
++ [Underground Lab](https://codeforces.com/contest/780/problem/E) - Euler tour + 2*n + 1 vertices --> make a tree into an array.  
+
+Working list:     
+
+- [Substitutes in Number](https://codeforces.com/contest/464/problem/C)   
+
+- [Game of Stones](https://codeforces.com/contest/768/problem/E)  
+
+
+Reading List:
+- http://tamlyhoctoipham.com/lam-the-nao-de-khong-quen-nhung-gi-da-hoc?fbclid=IwAR1T-ryutSOu_G-YSnWztiuEItvKnz73mHreaUFQD3o9-Ib7cNV6YtHfHkM  
+
+- https://codeforces.com/blog/entry/20284  
+- https://codeforces.com/blog/entry/60003  
+
+**Solution zone:**  
+  
+
+
+
+
 
 
 
