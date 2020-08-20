@@ -9,21 +9,22 @@
 #define mid ((l+r)/2)
 #define pr pair<int,int>
 using namespace std;
-const int N = 105;
-int a[N];
-int n,t;
+const int N = 1605;
+int cnt[N],n,t;
+int g[N], mex[N];
 int main(){
 	ios_base::sync_with_stdio(0); cin.tie(0);
 	cin >> t;
 	while (t--){
-		cin >> n;
-		int xorSum = 0, check = 0;
-		for(int i=1;i<=n;++i){
-			cin >> a[i];
-			if (a[i] != 1) check = 1;
-			xorSum ^= a[i];
+		cin >> n;	n*=2;
+		g[0] = g[1] = g[2] = 0;
+		for(int i=3;i<=n;++i){
+			memset(cnt, 0, sizeof(cnt));
+			for(int j=0;j+3 <= i;++j){
+				cnt[g[j] ^ g[i - 3 -j]] = 1;
+			}
+			for(int j=0;j<N;++j) if (!cnt[j]) {g[i] = j; break;}
 		}
-		// if (!check) cout << (n % 2 ? -1 : 1) << '\n';
-		cout << (xorSum == 1 ? 1 : -1) << '\n';
+		cout << (g[n] ? "X" : "Y")<< '\n';
 	}
-}
+ }

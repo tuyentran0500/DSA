@@ -37,19 +37,37 @@ Now we will learn how to find, for any game state of impartial game, a correspon
 We consider the follwoing modification to Nim: we also allow **adding stones to a chosen pile**. The exact rules about how and when increasing is allowed **do not interest us**, however the reuls should keep our game **acyclic**. In later sections, example games are considered.  
 **Lemma.** The addition of increasing to Nim doesn't how winning and losing states are determined. In other word, increases are useless, and we don't have to use them in a winning strategy.  
 **Proof** Suppose a player added stones to a pile. Then his opponent ca simply undo his move - decrease the number back tot he previous value. Since the game is acyclic, sooner or later, the current play won't be able to use an increase move and will have to do the usual Nim move.  
-### Sprague-Grundy theorem  
-Let's consider a state v of a two-player impartial game and let $v_i$ be the states reachable from it (where i $\in \{1,2,3...k\}, k \geq 0$). To this state, we can assign a fully equivalent game of Nim with one pile of size x. The number x is called the Grundy value of num-value of state v.  
-Moreever, this number can be found in the following recursive way:  
+## Sprague-Grundy theorem  
+Link to study: [Samidavies blog](https://samidavies.wordpress.com/2016/05/28/the-sprague-grundy-theorem/?fbclid=IwAR22OXm5uFu6nPreGpzrsUV6XfYXBBYcOqF4jqJUgEHfo6t8jsGGts-uu9k)  
+### Background  
 
-$$ x = mex \{x_1,x_2,...x_k\} $$
+$$mex(N) = min\{ x \in Z_geq0 : x \notin N\}$$  
+= The smallest nonnegative integer that is not an element in N.  
+### Game as graphs  
+A game can be represented as a graph when the vertex set is the set of positions in the game, and there exists a directed edge between x and y if a player can move from position x to y.  
+In normal play, the loser of a game is the person who ends at the vertex wich has no out edges.  
+So given a game $X = (V, f)$ there is a position set V and a function f, where for each $v \in V, f(v)$ is the possible positions to move to from v. f(v) is called the set of **followers** of v.  
 
-Where $x_i$ is the Grundy value for state $v_i$, and the function mex (minimum excludant) is the smallest non-negative integer not found in the given set.  
-Viewing the game as a graph, we can gradually calculate the Grundy values starting from vertices without outgoing edges. Grundy value being equal to zero means a state is losing.  
-**Proof** We will use a proof by induction.  
-For vertices without a move, the value x is the mex of and empty set, which is zero. That is correct, since an empty Nim is losing.  
-Now consider any other vertex v. By induction, we assume the value $x_i$ corresponding to its reachable vertices are already calculated.  
-Let p = $mex\{x_1...x_k\}$. Then we know that for any integer $i \in [0, p)$ there exists a reachable vertex with Grundy value i. This means v is **equivalent to a state of the game of nim with increases with one pile of the size p**  
-In such a game we have transitions to piles of every size smaller than p and possibly transitions to piles with sizes greater than p. Therefore, p is indeed the desired Grundy value for the currently considered state.  
+![img](https://samidavies.files.wordpress.com/2016/05/ttt2graph1.png?w=768)  
+On a game $X = (V, f)$, the **Sprague-Grundy function is defined as g : $V \rightarrow Z_\geq0$ where:  
+$$ g(v) = min\{ j \geq 0 : j \neq g(x) for:x \in f(v)\} = mex\{ g(x) for: x \in f(v) \}$$
+So the Sprague-Grundy function inputs a position v and looks at the set of Sprague-Grundy values of v's followers. The function returns the smallest nonnegative integer which is not in the set of Sprague-Grundy values of v's followers.  
+
+### Combining games  
+Looking at a big game where there are tons of positions available is difficult. To overcome this, the big game can be broken into a bunch of smaller games, and then combining them back together, is much easier.  
+Denote the k smaller games as:  
+$$G_1 = (V_1, f_1), G_2 = (V_2, f_2),... G_k = (V_k,f_k)$$  
+The big game is called the **disjuctive sum** or **combined game** of the k smaller ganes. Let the big game be denoted as G, and define it as:  
+$$G = G_1 + G_2 + ... + G_k = (V, F), where, V = V_1 x V_2 x ... V_k, f = f_1 x f_2 x ... x f_k$$  
+In the combined game, $u=(u_1, u_2, ... u_k) \in V$ is a follower of v = (v_1, v_2, v_k) \in V$ exactly when there is some $i* \in [k]$ such that $f(i*)*(v_*i) = u_i$ and for all $i \in [k]# such as $i \neq i*, v_i = u_i$.  
+### Equivalent positions.  
+As stated in the beginning of this post, the whole objective here is to prove that two games are equivalent. So let's define the notion of equivalent position in the games. Let x and y be two positions, not necessarily in the same game. Let this be referred to as the outcome of a position. x and y are said to be **equivalent** if for any position z in any game, the combined positions x + z + y + z have the same outcome.  
+Intuitively, this means that playing a game from position x, always has the same outcome as playing a game from position y. The outcome of a determined game is only dependent on its starting position. Thus fixed games G, with starting position x, and H, with starting position y, are equivalent if and only if x and y are equivalent.  
+f
+
+
+
+
 
 
 
