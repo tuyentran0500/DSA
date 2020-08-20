@@ -39,6 +39,58 @@ for (int m = 1; m < (1 << n); ++m){
 **Example problem:** [Or Plus Max](https://atcoder.jp/contests/arc100/tasks/arc100_c)  
 [**Source code**](../Atcoder/ARC100E.cpp)  
 
+## Matrix multiplication review:  
+```
+struct matrix{
+	vector< vector<long long> > mat;
+	pr matsize;
+	matrix(){ matsize = {0,0}; }
+	matrix(int n){
+		matsize = {n, n};
+		mat.assign(n, vector<long long> (n, 0LL));
+		for(int i=0;i<n;++i) mat[i][i] = 1;
+	}
+	matrix(int n,int m){
+		matsize = {n, m};
+		mat.assign(n, vector<long long>(m, 0LL));
+	}
+	matrix(vector< vector<long long> > altMat,int n,int m){
+		mat = altMat;
+		matsize = {n, m};
+	}
+	void print(){
+		for(int i=0;i<matsize.first;++i){
+			for(int j=0;j<matsize.second;++j){
+				cout << mat[i][j] << ' ';
+			}
+			cout << '\n';
+		}
+		cout << '\n';
+	}
+};
+matrix operator*(matrix a,matrix b){
+	int n = a.matsize.first, m = a.matsize.second, p = b.matsize.second;
+	matrix ans = matrix(n, p);
+	for(int i=0;i<n;++i){
+		for(int j=0;j<p;++j){
+			for(int k=0;k<m;++k) {
+				ans.mat[i][j] += a.mat[i][k] * b.mat[k][j];
+				ans.mat[i][j] %= mod;
+			}
+		}
+	}
+	return ans;
+}
+matrix power(matrix a,long long n){
+	matrix ans = matrix(a.matsize.first);
+	for(int i=0;i<logN;++i){
+		if (bits(n, i)) ans = ans * a;
+		a = a * a;
+	}
+	return ans;
+}
+```  
+
 ## Gausian Elimination Technique and XOR related problem. 
 **Source**: https://codeforces.com/blog/entry/68953  
 The whole technique can be divided into two main parts, some problems can be solved by using only the first part.  
@@ -149,6 +201,8 @@ for(int i=LOG_N-1;i>=0;--i){
 Similar problem:  
 + [Godzilla and Pretty XOR](https://codeforces.com/group/qcIqFPYhVr/contest/203881/problem/S): Note that with the basis of size i, we will generate $2^i$ different subset xor. Therefore, we could use the same idea as the problem 3 and trace the answer.  
 + [Mahmoud and Ehab and yet another xor task](https://codeforces.com/contest/959/problem/F): This is quite similar with BADXOR problem in SPOJ, the problem is that we need to handle the querry offline, it works fine as DQUERY/KQUERY.  
+
+
 
 
 
