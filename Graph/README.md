@@ -160,8 +160,20 @@ void prep(int u,int preU){
         prep(node.adj, u);
     }
 }
+```  
+## Euler Tour  
+Source code:
 ```
- 
+void dfs(int u,int pre){
+    le[u] = ++cnt;
+    c[le[u]] = color[u];
+    for (auto v : G[u]){
+        if (v == pre) continue;
+        dfs(v, u);
+    }
+    ri[u] = cnt;
+}
+```
 
 
 
