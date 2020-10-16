@@ -25,3 +25,29 @@ The solution is based on a greedy method:
 - The perfect time to do "milk job" is right before the deadline.
 From that you could use DSU to find the closest time to finish "milk" with cow i, right before the deadline.  
 [Source code](./MSCHED.cpp)  
+
+## DSU on tree  
+**Problem statement**  
+> Given a tree, every vertex has color. Query is how many vertices in subtree of vertex `v` are colored with color `c`.  
+### O(nlogn) approach  
+**DSU on tree template(Source: Maripium)**  
+Problem: [Lomsat gelral](https://codeforces.com/contest/600/problem/E)  
+```
+void dfs(int u,int pre){
+  cnt[u][c[u]] = 1;
+  // init the map value in here.
+  for(auto v : G[u]){
+    if (v == pre) continue;
+    dfs(v, u);
+    if (cnt[u].size() < cnt[v].size()){
+      cnt[u].swap(cnt[v]); // always note this.
+      // do something to swap two map
+    }
+    // add new element to map.
+    for(auto it : cnt[v]){
+      cnt[u][it.first] |= it.second;
+    }
+  }
+  ans[u] = cnt[u].size();
+}
+```
