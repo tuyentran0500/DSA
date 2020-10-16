@@ -96,19 +96,15 @@ Problem lists (updated in 20/9)
 - [100 challenges](https://docs.google.com/spreadsheets/d/11VqPaHAPi7kqY-x3ZlusYSk7vVmG8ZtiUWIla1AzhvU/edit#gid=1386834576)  
 Reading List:
 - http://tamlyhoctoipham.com/lam-the-nao-de-khong-quen-nhung-gi-da-hoc?fbclid=IwAR1T-ryutSOu_G-YSnWztiuEItvKnz73mHreaUFQD3o9-Ib7cNV6YtHfHkM  
+- https://viblo.asia/p/deep-learning-graph-neural-network-a-literature-review-and-applications-6J3ZgP0qlmB?fbclid=IwAR0rgBG6tacS2CX80PiQgX5cmRYgeoOBTShqvtwnAmtCGrrimpL01bYBRJM#_1-so-bai-toan-dien-hinh-2  
 
 - https://codeforces.com/blog/entry/20284  
 - https://codeforces.com/blog/entry/60003  
 
 **Solution zone:**  
-Thus, we finally want to ask the question, "After inserting all N colors of balls into the row, we want there to be 0 bad spaces. How many ways are there of doing this?".  
-We can answer this question using DP. Indeed, let dp[x][y]:= the number of ways inserting balls of the first x colors in such a way that there are exactly "y" bad spaces 
-We have that initially dp[0][0] = 1, dp[0][y] = 0;
-Then, given that we have filledin colors upto x, we try to insert C[x+1] balls. Note that the total number of spaces prior to insertion is 1 + c[1] + C[2] + C[3] +... + c[x], (lets denote this sum is spaces[x]). From a dp[x][y] state, we have y "bad" space and space[x] - y = z good spaces.  
-We choose i good spaces and j bad spaces into which to insert C[x+1] balls. (naturally C[x+1] >= x+y). What will this state look like? Each ball that is inserted into a "Bad" space will destroy that bad space. Each ball that is inserted into a "good" space will remain good. Each of other balls will create a "bad" space upon insertion. Hence, the number of bad spaces will become (y - j) + (C[x+1] - i -j).  
-We finally need to measure how much will DP[x][y] contribute to the new state. We firsts choose i good spaces from z(=spaces[x]-y), and j bad spaces from y. This brings bout a cotribution comb(z,i) * comb(y,j).  
-Just choosing the possible locations is not enough however. In our example we need to have from "+1-1-1-1-1+" case, two different cases "+2-21-1+2+1-1+" and "+2+1-1-1+2-2+1-1+". Just by choosing which is good and bad spaces to insert balls would treet the above two as the same.  
-
+Let's line x = k contain not more than sqrt(n) points. Then for each pair of points on this line (lets it be ky1 and y2) check: is there square than contains them as vertexes. So we should check ....  
+Let's deleted all watched points and reverse points about line x = y. Then each line will contains not more than sqrt(n) points. Will solve the problem  in the same way.  
+Now we should learn: how to check is some pairs of points(on one vertical line) in input. Let's write all of this pairs in vectors. Each vector (for every line ) will contain pairs that we should check on it. Supose, that we check it for line number k. Let's mark in some array u for all points with x-coordinate equal to k u_k = k, Now to check our pair y-
 
   
 
