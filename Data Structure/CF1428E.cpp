@@ -1,0 +1,51 @@
+/*input
+
+*/
+#include <bits/stdc++.h>
+#define up(i,a,b) for(int (i) = (a);(i)<=(b);++(i))
+#define down(i,b,a) for(int (i) = (b);i>=(a);--i)
+#define bits(x,i) ((x >> i) & 1)
+#define mid ((l+r)/2)
+#define pr pair<int,int>
+using namespace std;
+const int N = 100005;
+int n, a[N], k;
+long long cost(int len,int parts){
+	int len1 = len/parts;
+	int len2 = len1 + 1;
+	int cnt2 = len % parts, cnt1 = parts - cnt2;
+	return (1LL * cnt1 * len1 * len1 + 1LL * cnt2 * len2 * len2);
+}
+struct node{
+	int len, parts;
+	node(){len = parts = 0;}
+	node(int _len, int _parts) {
+		len = _len;
+		parts = _parts;
+	}
+	long long optimizerAnswer() const{
+		return cost(len, parts) - cost(len, parts + 1);
+	}
+};
+bool operator<(node a, node b){
+	return a.optimizerAnswer() < b.optimizerAnswer();
+}
+int main(){
+	ios_base::sync_with_stdio(0); cin.tie(0);
+	cin >> n >> k;
+	priority_queue<node> pq;
+	up(i,1,n){
+		cin >> a[i];
+		pq.push(node(a[i], 1));
+	}	
+	while (k-- > n){
+		node u = pq.top(); pq.pop();
+		pq.push(node(u.len, u.parts + 1));
+	}
+	long long ans = 0;
+	while (pq.size()){
+		node u = pq.top(); pq.pop();
+		ans += cost(u.len, u.parts);
+	}
+	cout << ans;
+}
