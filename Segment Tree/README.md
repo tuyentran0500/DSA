@@ -24,7 +24,7 @@ void lazy_upd(int u,int l,int r){
 
 ```
 void upd(int u,int L,int R,int l,int r,int d){
-	//lazy_upd(u,L,R);
+	lazy_upd(u,L,R); // Always lazy first :)))))
 	if (L > R || L > r || R < l) return; 
 	if (l <= L && R <= r) {
 		lazy[u] = d;
