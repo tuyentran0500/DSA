@@ -3,6 +3,24 @@ Fenwick Tree is also called Binary Indexed Tree, or just BIT abbreviated.
 The most common application of Fenwich Tree is calculating the sum of a range.  
 Fenwick was first described in a papaer titled "A new data structure for cumulative frequency tables"(Peter M.Fenwick).  
 ## Function:
+Template for 1 bit array:  
+```
+void upd(int u,int val){
+	while (u <= n) {
+		bit[u] += val;
+		u += (u &-u);
+	}
+}
+int get(int u){
+	int ans = 0;
+	while (u){
+		ans += bit[u];
+		u -= (u &-u);
+	}
+	return ans;
+}
+```  
+Template for 2d BIT array.  
 UPDATE:  
 ```
 void upd(int t, int u,int val){
@@ -11,9 +29,6 @@ void upd(int t, int u,int val){
 		u+=(u&-u);
 	}
 }
-```  
-GET:  
-```
 int get(int t,int u){
 	int ans = 0;
 	while(u){
