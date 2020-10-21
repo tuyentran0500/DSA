@@ -173,7 +173,27 @@ void dfs(int u,int pre){
     }
     ri[u] = cnt;
 }
+```  
+## Eulerian path  
+A Eulerian path is a path in a graph that passes through all of its edges exactly once. A Eulerian cycle is a Eulerian path that is a cycle.  
+The problem is to find the Eulerian path in an undirected multigraph with loops.   
 ```
+stack St;
+put start vertex in St;
+until St is empty
+  let V be the value at the top of St;
+  if degree(V) = 0, then
+    add V to the answer;
+    remove V from the top of St;
+  otherwise
+    find any edge coming out of V;
+    remove it from the graph;
+    put the second end of this edge in St;
+```  
+First we can check if there is an Eulerian path. We can use the following theorem. An Eulerian cycle exists if and only if the degrees of all vertices are even. And an Eulerian path exists if and only if the number of vertices with odd degrees is two (or zero, in the case of the existence of a Eulerian cycle).  
+In addition, of course, the graph must be sufficiently connected (i.e., if you remove all isolated vertices from it, you should get a connected graph).
+
+
 
 
 
