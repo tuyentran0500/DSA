@@ -100,11 +100,14 @@ Reading List:
 
 - https://codeforces.com/blog/entry/20284  
 - https://codeforces.com/blog/entry/60003  
+- https://brilliant.org/wiki/linearity-of-expectation/ Gía trị kì vọng.  
 
 **Solution zone:**  
 Let's line x = k contain not more than sqrt(n) points. Then for each pair of points on this line (lets it be ky1 and y2) check: is there square than contains them as vertexes. So we should check ....  
 Let's deleted all watched points and reverse points about line x = y. Then each line will contains not more than sqrt(n) points. Will solve the problem  in the same way.  
-Now we should learn: how to check is some pairs of points(on one vertical line) in input. Let's write all of this pairs in vectors. Each vector (for every line ) will contain pairs that we should check on it. Supose, that we check it for line number k. Let's mark in some array u for all points with x-coordinate equal to k u_k = k, Now to check our pair y-
+Now we should learn: how to check is some pairs of points(on one vertical line) in input. Let's write all of this pairs in vectors. Each vector (for every line ) will contain pairs that we should check on it. Supose, that we check it for line number k. Let's mark in some array u for all points with x-coordinate equal to k u_k = k, Now to check our pair y-  
+
+
 
   
 
