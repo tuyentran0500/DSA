@@ -9,22 +9,22 @@ Blog: [Sum of expected value](https://codeforces.com/blog/entry/62690)
 ```
 void init(){
 	fact[0] = 1;
-	up(i,1,n+k) fact[i] = (fact[i-1] * i) % mod;
+	up(i,1,N-1) fact[i] = (fact[i-1] * i) % mod;
 }
-long long power(long long x, long long n){
-	long long ans = 1;
+ll power(ll x, ll n){
+	ll ans = 1;
 	for(int i=0;i<31;++i){
 		if (bits(n, i)) ans = (ans * x) % mod;
 		x = (x * x) % mod;
 	}
 	return ans;
 }
-long long inv(long long num, long long den){
+ll inv(ll num, ll den){
 	return (num * power(den, mod - 2)) % mod;
 }
-long long C(int k,int n){
-	int num = fact[n];
-	int den = (fact[k] * fact[n-k]) % mod;
+ll C(ll k,ll n){
+	ll num = fact[n];
+	ll den = (fact[k] * fact[n-k]) % mod;
 	return inv(num, den);
 }
 ```  
