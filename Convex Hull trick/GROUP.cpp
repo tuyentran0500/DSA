@@ -1,8 +1,8 @@
 /*input
-
+ 
 */
 // https://vn.spoj.com/problems/GROUP/
-
+ 
 #include <bits/stdc++.h>
 #define up(i,a,b) for(int (i) = (a);(i)<=(b);++(i))
 #define down(i,b,a) for(int (i) = (b);i>=(a);--i)
@@ -17,8 +17,13 @@ pr point[N];
 vector<pr> rec;
 vector<pr> line;
 // a, b
+long double slope(pr l1, pr l2){
+	return 1.0 * (l2.second - l1.second)/(l2.first - l1.first);
+}
 bool bad(pr l1, pr l2, pr l3){
-	return (l1.first - l3.first)*(l1.second - l2.second) < (l1.first - l2.first) * (l1.second - l3.second);
+	// if find min the slope(l1, l3) > slope(l1, l2)
+	// otherwise: slope(l1, l3) < slope(l1, l2)
+	return slope(l1, l3) > slope(l1, l2);
 }
 void add(int a,int b){
 	pr u = {a, b};
@@ -61,4 +66,4 @@ signed main(){
 		if (i + 1 < m) add(rec[i+1].first, dp[i]);
 	}
 	cout << dp[m-1];
-}
+} 

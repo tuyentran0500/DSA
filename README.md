@@ -103,11 +103,36 @@ Reading List:
 - https://brilliant.org/wiki/linearity-of-expectation/ Gía trị kì vọng.  
 
 **Solution zone:**  
-Let's line x = k contain not more than sqrt(n) points. Then for each pair of points on this line (lets it be ky1 and y2) check: is there square than contains them as vertexes. So we should check ....  
-Let's deleted all watched points and reverse points about line x = y. Then each line will contains not more than sqrt(n) points. Will solve the problem  in the same way.  
-Now we should learn: how to check is some pairs of points(on one vertical line) in input. Let's write all of this pairs in vectors. Each vector (for every line ) will contain pairs that we should check on it. Supose, that we check it for line number k. Let's mark in some array u for all points with x-coordinate equal to k u_k = k, Now to check our pair y-  
+If two cycles of odd length intersect, then they can be bypassed so as to obtain an edge-simple cycle of even length.  
+It follows that the given graph is a vertex cactus, with cycles of odd length, then the vertex segment is good - if there is no loop, that the vertex with the minimum number from this cycle is present on this segment and the vertex with maximum number from this cycle on this segment.  
+Then we can select all the cycles, and now we work with the segments.  
+Let us find for each vertex a maximal boundary such that the interval [i...mx_i] is a bipartite graph.  
+Then $mx_i$ is equal to the minimal right boundary of the segment, which was opened later i.  
+This can be considered a minimum on the suffix, initially setting for all cycles mx[minimum on the cycle] = maximum on the cycle.  
+To answer the query, we need to take the sume over $mx_i - i + 1$ for those who have $mx_i >= r$ and the sum over r - i + 1 for those have $mx_i \geq r$.  
+Then we note that $mx_i$ increases and we simply need to find the first moment when $mx_i$ becomes $\geq r$.  
 
 
+
+```
+    map<int,int> cntP, cntQ;
+    for(int i=2;i<=sqrt(q);++i){ // sqrt(N)
+        while (q % i == 0) {
+            cntQ[i]++;
+            q/=i;
+        }
+    }
+    if (q > 1) cntQ[q] = 1;
+    p/=q;
+    cntP = cntQ;
+    for(int i=2;i<=sqrt(p);++i){ // sqrt(N)
+        while (p % i == 0) {
+            cntP[i]++;
+            P/=i;
+        }
+    }
+    for(auto v : cntQ) ans = min(ans, power(v.first, cntP[v.first] - v.second));
+```  
 
   
 
