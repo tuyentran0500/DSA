@@ -10,54 +10,59 @@
 #define ll long long
 using namespace std;
 const int N  = 200005;
-map<string, vector<int>> edge;
-vector<int> G[N];
-int n;
-string s[N];
-int dp[N];
-int isOdd[N];
-// 0 lose
-// 1 draw
-// 2 win
-int visited[N];
-void dfs(int u, int odd){
-	visited[u] = 1;
-	isOdd[u] = odd;
-	for(auto v : G[u]){
-		if (!visited[v]){
-			dfs(v,1 - odd);
-			dp[u] = max(dp[u], 2 - dp[v]);
-		}
-		else if (visited[v] == 2){
-			dp[u] = max(dp[u], 2 - dp[v]);
-		}
-		else {
-
-			if (odd[dp[u] = max(dp[u], 1); // detect cycle
-
-		}
+int bit[N];
+void upd(int u, int val){
+	while (u < N) {
+		bit[u] += val;
+		u += (u & -u);
 	}
-	if (G[u].size() == 0) dp[u] = 2;
-	visited[u] = 2;
 }
+int get(int u){
+	int ans = 0;
+	for(;u;u-=(u&-u)) ans += bit[u];
+	return ans;
+}
+vector<int> lPos[N];
+int a[N], b[N];
+int f[N]; // f[i] = j: the minium length such that (i, i+j-1) contains all n pairs;
+int res[N];
+int n, m;
 int main(){
     ios_base::sync_with_stdio(0); cin.tie(0);
-	cin >> n;
+	cin >> n >> m;
 	up(i,1,n){
-		cin >> s[i];
-		edge[s[i].substr(0,3)].push_back(i);
+		cin >> a[i] >> b[i];
+		lPos[a[i]].push_back(i);
+		upd(a[i], 1);
 	}
-	up(u,1,n){
-		int len = s[u].size();
-		for(auto v : edge[s[u].substr(len - 3, 3)]){
-			G[u].push_back(v);
+	for(int startPos=1;startPos<=m;++startPos){
+		int l= startPos, r = m;
+		if (get(r) - get(l-1) < n) {
+			f[l] = m + 1;
+			continue;
+		}
+		int ans = r;
+		while (l <= r){
+			if (get(mid) - get(startPos-1) == n){
+				ans = mid;
+				r = mid - 1;
+			}
+			else l = mid + 1;
+		}
+		f[startPos] = ans - startPos + 1;
+		// update res table
+		res[ans - startPos + 1]++;
+		res[m - startPos + 2]--;
+		// add ending point.
+		for(auto id : lPos[startPos]){
+			upd(startPos, -1);
+			upd(b[id], 1);
 		}
 	}
-	up(i,1,n){
-		if (!visited[i]) dfs(i, 1);
-		if (dp[i] == 0) cout << "Aoki\n";
-		if (dp[i] == 1) cout << "Draw\n";
-		if (dp[i] == 2) cout << "Takahashi\n";
+	int ans = 0;
+	for(int i=1;i<=m;++i){
+		ans += res[i];
+		cout << ans << ' '; 
 	}
 
 }

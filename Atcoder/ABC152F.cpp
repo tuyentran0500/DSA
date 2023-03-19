@@ -9,19 +9,16 @@
 #define mid ((l+r)/2)
 #define pr pair<int,int>
 using namespace std;
-const int N = 55;
 long long dp[2][1 << 20];
 vector<int> G[N];
 pair<int,int> restriction[N];
 int n,m;
-int level[N], par[N];
+f
 int ok[N];
-void dfs(int u, int pre){
-	par[u] = pre;
+void dfs(int u, int pre, vector<int>& level){
 	for (auto v : G[u]){
 		if (v == pre) continue;
-		level[v] = level[u] + 1;
-		dfs(v, u);
+		dfs(v, u, level);
 	}
 }
 void travel(int id,int u, int v){

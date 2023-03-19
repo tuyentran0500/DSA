@@ -155,11 +155,3 @@ int main()
  
     return 0;
 }
-#define ll long long
-using namespace std;
-const int N  = 8;
-
-int main(){
-    ios_base::sync_with_stdio(0); cin.tie(0);
-	
-}

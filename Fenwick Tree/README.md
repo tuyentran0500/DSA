@@ -5,20 +5,7 @@ Fenwick was first described in a papaer titled "A new data structure for cumulat
 ## Function:
 Template for 1 bit array:  
 ```
-void upd(int u,int val){
-	while (u <= n) {
-		bit[u] += val;
-		u += (u &-u);
-	}
-}
-int get(int u){
-	int ans = 0;
-	while (u){
-		ans += bit[u];
-		u -= (u &-u);
-	}
-	return ans;
-}
+
 ```  
 Template for 2d BIT array.  
 UPDATE:  
